@@ -1,5 +1,6 @@
 'use strict';
 
+
 function getSensorByName(name, sensors) {
     return sensors.filter(
         function(sensor) {
@@ -10,7 +11,7 @@ function getSensorByName(name, sensors) {
 
 function buildRows(sensor, readings) {
 
-    // var simpleMovingAverage = require('simplemovingaverage');
+    // var SimpleMovingAverage = require('simplemovingaverage');
     var smaTemps = new SimpleMovingAverage();
     var smaHums = new SimpleMovingAverage();
     var intWindowSize = 5;
@@ -101,9 +102,47 @@ angular.module('fridgesApp')
             function(response) {
                 $scope.readings = response;
                 $scope.showData = true;
+                $scope.message = '';
 
                 // Build chart objects
+                //Methods
+
+                // init();
+
+                $scope.chartObject1 = {};
+
+                function hideSeries(selectedItem) {
+                    var col = selectedItem.column;
+                    if (selectedItem.row === null) {
+                    console.log('--- col', col);
+                        if ($scope.chartObject1.view.columns[col] === col) {
+                            $scope.chartObject1.view.columns[col] = {
+                                label: $scope.chartObject1.data.cols[col].label,
+                                type: $scope.chartObject1.data.cols[col].type,
+                                calc: function() {
+                                    return null;
+                                }
+                            };
+                            $scope.chartObject1.options.colors[col - 1] = '#CCCCCC';
+                        } else {
+                            $scope.chartObject1.view.columns[col] = col;
+                            $scope.chartObject1.options.colors[col - 1] = $scope.chartObject1.options.defaultColors[col - 1];
+                        }
+                    }
+                }
+
+                console.log('switching on');
+                $scope.hideSeries = hideSeries;
+
                 $scope.chartObject1 = buildChart('Ambient', $scope.readings);
+
+                $scope.chartObject1.view = {
+                    columns: [0, 1, 2]
+                };
+
+                console.log('switching off');
+                $scope.hideSeries(2);
+
                 $scope.chartObject2 = buildChart('Curing', $scope.readings);
                 $scope.chartObject3 = buildChart('Fridge', $scope.readings);
 
