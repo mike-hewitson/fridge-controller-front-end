@@ -5,7 +5,7 @@ version 0.15.1.
 
 ## Build & development
 
-run bower install and npm install to get all components
+Run ```$ bower install``` and ```$ npm install``` to get all components.
 Run ```$ grunt``` for building and ```$ grunt serve``` for preview.
 
 ## Testing
