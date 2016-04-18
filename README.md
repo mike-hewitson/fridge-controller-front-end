@@ -14,7 +14,7 @@ Running `grunt test` will run the unit tests with karma.
 
 ## Deployment
 
-'''
+```
 $ grunt build
-'''
+```
 Copy dist folder to server directory
