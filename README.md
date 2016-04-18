@@ -12,6 +12,7 @@ Run `grunt` for building and `grunt serve` for preview.
 
 Running `grunt test` will run the unit tests with karma.
 
-## deployment
+## Deployment
 
+'''$ grunt build'''
 Copy dist folder to server directory
