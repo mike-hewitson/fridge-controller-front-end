@@ -6,11 +6,11 @@ version 0.15.1.
 ## Build & development
 
 run bower install and npm install to get all components
-Run `grunt` for building and `grunt serve` for preview.
+Run ```$ grunt``` for building and ```$ grunt serve``` for preview.
 
 ## Testing
 
-Running `grunt test` will run the unit tests with karma.
+Running ```$ grunt test``` will run the unit tests with karma.
 
 ## Deployment
 
