@@ -33,6 +33,11 @@ angular
                 controller: 'HistoryCtrl',
                 controllerAs: 'history'
             })
+            .when('/summary', {
+                templateUrl: 'views/summary.html',
+                controller: 'SummaryCtrl',
+                controllerAs: 'summary'
+            })
             .otherwise({
                 redirectTo: '/'
             });
