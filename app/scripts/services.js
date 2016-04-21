@@ -4,12 +4,11 @@ angular.module('fridgesApp')
     .constant('baseURL', 'http://localhost:3000/')
     // .constant('baseURL', 'http://mikeyjcat.ddns.net:3000/')
     // .constant('baseURL', 'http://192.168.1.126:3000/')
-    .service('currentFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+    .service('latestFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
-        this.getCurrent = function() {
-            return $resource(baseURL + 'readings/latest/');
+        this.getLatest = function() {
+            return $resource(baseURL + 'latest/');
         };
-
     }])
     .service('historyFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
@@ -17,8 +16,8 @@ angular.module('fridgesApp')
             return $resource(baseURL + 'readings/:id', null, { 'update': { method: 'PUT' } });
         };
 
-        this.getToday = function() {
-            return $resource(baseURL + 'readings/today/');
+        this.getHistory = function() {
+            return $resource(baseURL + 'history/');
         };
     }])
     .service('summaryFactory', ['$resource', 'baseURL', function($resource, baseURL) {
@@ -26,4 +25,4 @@ angular.module('fridgesApp')
         this.getSummary = function() {
             return $resource(baseURL + 'summary/:id');
         };
-    }])
+    }]);

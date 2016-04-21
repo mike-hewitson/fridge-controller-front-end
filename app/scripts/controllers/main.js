@@ -8,11 +8,11 @@
  * Controller of the fridgesApp
  */
 angular.module('fridgesApp')
-    .controller('MainCtrl', ['$scope', 'currentFactory', function($scope, currentFactory) {
+    .controller('MainCtrl', ['$scope', 'latestFactory', function($scope, currentFactory) {
 
         $scope.showCurrent = false;
         $scope.message = 'Loading ...';
-        currentFactory.getCurrent().query(
+        currentFactory.getLatest().query(
             function(response) {
                 $scope.reading = response[0];
                 $scope.showCurrent = true;

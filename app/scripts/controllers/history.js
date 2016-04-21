@@ -98,7 +98,7 @@ angular.module('fridgesApp')
 
         $scope.showData = false;
         $scope.message = 'Loading ...';
-        historyFactory.getToday().query(
+        historyFactory.getHistory().query(
             function(response) {
                 $scope.readings = response;
                 $scope.showData = true;
