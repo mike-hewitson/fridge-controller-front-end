@@ -67,8 +67,8 @@ module.exports = function(config) {
 
         // add to list of preprocesssors
         preprocessors: {
-            'app/scripts/controllers/*.js': ['coverage'],
-            'app/scripts/*.js': ['coverage'],
+            'app/scripts/controllers/*.js': ['jshint', 'coverage'],
+            'app/scripts/*.js': ['jshint', 'coverage'],
             // 'app/scripts/app.js': ['coverage']
         },
 
