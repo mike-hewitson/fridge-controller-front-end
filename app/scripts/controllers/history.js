@@ -11,7 +11,7 @@ function getSensorByName(name, sensors) {
 
 function buildRows(sensor, readings) {
 
-    // var SimpleMovingAverage = require('simplemovingaverage');
+    // var SimpleMovingAverage = require('./simplemovingaverage');
     var smaTemps = new SimpleMovingAverage();
     var smaHums = new SimpleMovingAverage();
     var intWindowSize = 5;

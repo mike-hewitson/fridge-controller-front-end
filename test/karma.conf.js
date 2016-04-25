@@ -80,12 +80,11 @@ module.exports = function(config) {
 
         // add plugin settings
         coverageReporter: {
-            // type of file to output, use text to output to console
-            type: 'text',
-            // directory where coverage results are saved
-            dir: 'test-results/coverage/'
-                // if type is text or text-summary, you can set the file name
-                // file: 'coverage.txt'
+            // specify a common output directory
+            dir: 'build/reports/coverage',
+            reporters: [
+                { type: 'html', subdir: 'report-html' },
+            ]
         },
 
         // add plugin settings

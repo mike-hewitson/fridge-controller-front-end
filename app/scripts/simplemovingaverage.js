@@ -2,7 +2,7 @@
 
 // simplemovingaverage.js v1.0.0
 
-(function() {
+// (function() {
 
   var SimpleMovingAverage = function() {};
 
@@ -28,11 +28,11 @@
         subset.push(setTimeSeries[i]);
         i++;
         j--;
-        if (i == setTimeSeries.length) {
+        if (i === setTimeSeries.length) {
           resultSet.push(deco(subset));
           return resultSet;
         }
-        if (j == 0) {
+        if (j === 0) {
           resultSet.push(deco(subset));
           subset = [];
           j = intWindowSize;
@@ -57,20 +57,20 @@
   SimpleMovingAverage.prototype.memoize = function(fn) {
     return function () {
       var hash = arguments[0];
-      fn.m ? fn.m : fn.m = {};
+      if (!fn.m) { fn.m = {};}
       return (hash in fn.m) ? fn.m[hash] :
       fn.m[hash] = fn.apply(null, arguments);
     };
   };
 
-  if (typeof exports !== 'undefined') {
-    if (typeof module !== 'undefined' && module.exports) {
-      exports = module.exports = SimpleMovingAverage;
-    } else {
-      exports.SimpleMovingAverage = SimpleMovingAverage;
-    }
-  } else {
-    window.SimpleMovingAverage = SimpleMovingAverage;
-  }
+//   if (typeof exports !== 'undefined') {
+//     if (typeof module !== 'undefined' && module.exports) {
+//       exports = module.exports = SimpleMovingAverage;
+//     } else {
+//       exports.SimpleMovingAverage = SimpleMovingAverage;
+//     }
+//   } else {
+//     window.SimpleMovingAverage = SimpleMovingAverage;
+//   }
 
-})();
+// })();

@@ -11,7 +11,7 @@ function getSensorByName(name, sensors) {
 
 function buildRows(sensor, readings) {
 
-    // var SimpleMovingAverage = require('simplemovingaverage');
+    // var SimpleMovingAverage = require('./simplemovingaverage');
     var smaTemps = new SimpleMovingAverage();
     var smaHums = new SimpleMovingAverage();
     var intWindowSize = 5;
@@ -80,25 +80,11 @@ function buildChart(sensor, readings) {
  * Controller of the fridgesApp
  */
 angular.module('fridgesApp')
-    .controller('SummaryCtrl', ['$scope', 'summaryFactory', function($scope, summaryFactory) {
-
-        $scope.showData = false;
-        $scope.message = 'Loading ...';
-        historyFactory.getReadings().query(
-            function(response) {
-                $scope.readings = response;
-                $scope.showData = true;
-            },
-            function(response) {
-                $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
-            });
-
-    }])
     .controller('SummaryChartCtrl', ['$scope', 'summaryFactory', function($scope, summaryFactory) {
 
         $scope.showData = false;
         $scope.message = 'Loading ...';
-        historyFactory.getToday().query(
+        summaryFactory.getToday().query(
             function(response) {
                 $scope.readings = response;
                 $scope.showData = true;
