@@ -30,7 +30,7 @@ angular
             })
             .when('/history', {
                 templateUrl: 'views/history.html',
-                controller: 'HistoryCtrl',
+                controller: 'HistoryChartCtrl',
                 controllerAs: 'history'
             })
             .when('/summary', {
