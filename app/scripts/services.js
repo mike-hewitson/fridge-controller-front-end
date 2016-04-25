@@ -12,9 +12,9 @@ angular.module('fridgesApp')
     }])
     .service('historyFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
-        this.getReadings = function() {
-            return $resource(baseURL + 'readings/:id', null, { 'update': { method: 'PUT' } });
-        };
+        // this.getReadings = function() {
+        //     return $resource(baseURL + 'readings/:id', null, { 'update': { method: 'PUT' } });
+        // };
 
         this.getHistory = function() {
             return $resource(baseURL + 'history/');

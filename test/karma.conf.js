@@ -2,79 +2,107 @@
 // Generated on 2016-04-04
 
 module.exports = function(config) {
-  'use strict';
+    'use strict';
 
-  config.set({
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+    config.set({
+        // add to list of reporters
+        reporters: ['progress', 'coverage'],
 
-    // base path, that will be used to resolve files and exclude
-    basePath: '../',
 
-    // testing framework to use (jasmine/mocha/qunit/...)
-    // as well as any additional frameworks (requirejs/chai/sinon/...)
-    frameworks: [
-      'jasmine'
-    ],
+        // enable / disable watching file and executing tests whenever any file changes
+        autoWatch: true,
 
-    // list of files / patterns to load in the browser
-    files: [
-      // bower:js
-      'bower_components/jquery/dist/jquery.js',
-      'bower_components/angular/angular.js',
-      'bower_components/bootstrap/dist/js/bootstrap.js',
-      'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-route/angular-route.js',
-      'bower_components/angular-sanitize/angular-sanitize.js',
-      'bower_components/angular-touch/angular-touch.js',
-      'bower_components/angular-google-chart/ng-google-chart.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      // endbower
-      'app/scripts/**/*.js',
-      'test/mock/**/*.js',
-      'test/spec/**/*.js'
-    ],
+        // base path, that will be used to resolve files and exclude
+        basePath: '../',
 
-    // list of files / patterns to exclude
-    exclude: [
-    ],
+        // testing framework to use (jasmine/mocha/qunit/...)
+        // as well as any additional frameworks (requirejs/chai/sinon/...)
+        frameworks: [
+            'jasmine'
+        ],
 
-    // web server port
-    port: 8080,
+        // list of files / patterns to load in the browser
+        files: [
+            // bower:js
+            'bower_components/jquery/dist/jquery.js',
+            'bower_components/angular/angular.js',
+            'bower_components/bootstrap/dist/js/bootstrap.js',
+            'bower_components/angular-resource/angular-resource.js',
+            'bower_components/angular-route/angular-route.js',
+            'bower_components/angular-sanitize/angular-sanitize.js',
+            'bower_components/angular-touch/angular-touch.js',
+            'bower_components/angular-google-chart/ng-google-chart.js',
+            'bower_components/angular-mocks/angular-mocks.js',
+            // endbower
+            'app/scripts/**/*.js',
+            'test/mock/**/*.js',
+            'test/spec/**/*.js'
+        ],
 
-    // Start these browsers, currently available:
-    // - Chrome
-    // - ChromeCanary
-    // - Firefox
-    // - Opera
-    // - Safari (only Mac)
-    // - PhantomJS
-    // - IE (only Windows)
-    browsers: [
-      'PhantomJS'
-    ],
+        // list of files / patterns to exclude
+        exclude: [],
 
-    // Which plugins to enable
-    plugins: [
-      'karma-phantomjs-launcher',
-      'karma-jasmine'
-    ],
+        // web server port
+        port: 8080,
 
-    // Continuous Integration mode
-    // if true, it capture browsers, run tests and exit
-    singleRun: false,
+        // Start these browsers, currently available:
+        // - Chrome
+        // - ChromeCanary
+        // - Firefox
+        // - Opera
+        // - Safari (only Mac)
+        // - PhantomJS
+        // - IE (only Windows)
+        browsers: [
+            'PhantomJS'
+        ],
 
-    colors: true,
+        // Which plugins to enable
+        plugins: [
+            'karma-phantomjs-launcher',
+            'karma-jasmine',
+            'karma-coverage',
+            'karma-jshint-preprocessor'
+        ],
 
-    // level of logging
-    // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO,
+        // add to list of preprocesssors
+        preprocessors: {
+            'app/scripts/controllers/*.js': ['coverage'],
+            'app/scripts/*.js': ['coverage'],
+            // 'app/scripts/app.js': ['coverage']
+        },
 
-    // Uncomment the following lines if you are using grunt's server to run the tests
-    // proxies: {
-    //   '/': 'http://localhost:9000/'
-    // },
-    // URL root prevent conflicts with the site root
-    // urlRoot: '_karma_'
-  });
+        // Continuous Integration mode
+        // if true, it capture browsers, run tests and exit
+        singleRun: false,
+
+        colors: true,
+
+        // add plugin settings
+        coverageReporter: {
+            // type of file to output, use text to output to console
+            type: 'text',
+            // directory where coverage results are saved
+            dir: 'test-results/coverage/'
+                // if type is text or text-summary, you can set the file name
+                // file: 'coverage.txt'
+        },
+
+        // add plugin settings
+        junitReporter: {
+            // location of results output file
+            outputFile: 'test-results/junit-results.xml'
+        },
+
+        // level of logging
+        // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
+        logLevel: config.LOG_INFO,
+
+        // Uncomment the following lines if you are using grunt's server to run the tests
+        // proxies: {
+        //   '/': 'http://localhost:9000/'
+        // },
+        // URL root prevent conflicts with the site root
+        // urlRoot: '_karma_'
+    });
 };

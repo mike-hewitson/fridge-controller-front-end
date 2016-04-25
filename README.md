@@ -6,11 +6,18 @@ version 0.15.1.
 ## Build & development
 
 Run ```$ bower install``` and ```$ npm install``` to get all components.
+
+Running this will need the REST server on port 3000, started by running:
+```json-server db.json --watch``` from the json-server directory.
+
 Run ```$ grunt``` for building and ```$ grunt serve``` for preview.
 
 ## Testing
 
 Running ```$ grunt test``` will run the unit tests with karma.
+
+Change directory to the tests directory and run:
+```protractor protractor.conf.js```
 
 ## Deployment
 
