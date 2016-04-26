@@ -81,9 +81,12 @@ module.exports = function(config) {
         // add plugin settings
         coverageReporter: {
             // specify a common output directory
+            // type : 'text'
             dir: 'build/reports/coverage',
             reporters: [
+                { type: 'text' },
                 { type: 'html', subdir: 'report-html' },
+                // }
             ]
         },
 
