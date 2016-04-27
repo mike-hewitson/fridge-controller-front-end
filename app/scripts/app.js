@@ -35,7 +35,7 @@ angular
             })
             .when('/summary', {
                 templateUrl: 'views/summary.html',
-                controller: 'SummaryCtrl',
+                controller: 'SummaryChartCtrl',
                 controllerAs: 'summary'
             })
             .otherwise({

@@ -1,11 +1,11 @@
-<div ng-controller="SummaryCtrl">
+<div ng-controller="SummaryChartCtrl">
     <div class="row row-content">
         <div ng-if="!showData">
             <h3>{{message}}</h3>
         </div>
     </div>
-    <div class="row row-content" ng-controller="SummaryChartCtrl" ng-if="showData">
-        <div class="col-xs-12">>
+    <div class="row row-content" ng-if="showData">
+        <div class="col-xs-12">
             <div google-chart chart="chartObject" style="height:600px; width:100%;"></div>
         </div>
     </div>
