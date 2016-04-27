@@ -23,16 +23,16 @@ angular.module('fridgesApp')
                     { id: 'x', label: 'Date', type: 'string' },
                     { id: 's', label: 'Maximum', type: 'number' },
                     { id: 's', label: 'Average', type: 'number' },
-                    { id: 's', label: 'Minimin', type: 'number' }
+                    { id: 's', label: 'Minimum', type: 'number' }
                 ];
 
                 var rows = [];
                 for (var i = 0; i < $scope.summary.length; i++) {
                     rows.push({
                         c: [{ v: $scope.summary[i]._id.date },
-                            { v: $scope.summary[i].maxTemp },
-                            { v: $scope.summary[i].avgTemp },
-                            { v: $scope.summary[i].minTemp }
+                            { v: $scope.summary[i].maxTemp.toFixed(1) },
+                            { v: $scope.summary[i].avgTemp.toFixed(1) },
+                            { v: $scope.summary[i].minTemp.toFixed(1) }
                         ]
                     });
                 }
