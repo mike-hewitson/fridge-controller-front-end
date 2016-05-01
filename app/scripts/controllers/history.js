@@ -1,46 +1,27 @@
 'use strict';
 
 
-function getSensorByName(name, sensors) {
-    return sensors.filter(
-        function(sensor) {
-            return sensor.sensor === name;
-        }
-    );
-}
-
-function buildRows(sensor, readings) {
-
-    // var SimpleMovingAverage = require('./simplemovingaverage');
-    var smaTemps = new SimpleMovingAverage();
-    var smaHums = new SimpleMovingAverage();
-    var intWindowSize = 5;
-
-    var rows = [];
-    var temps = [];
-    var hums = [];
-    var newTemps = [];
-    var newHums = [];
-
-    for (var i = 0; i < readings.length; i++) {
-        var data = getSensorByName(sensor, readings[i].sensors)[0];
-        temps.push(data.temp);
-        hums.push(data.hum);
-    }
-
-    newTemps = smaTemps.get(temps, intWindowSize);
-    newHums = smaHums.get(hums, intWindowSize);
-
-    var j;
-    for (i = 0; i < newTemps.length; i++) {
-        j = i * intWindowSize;
-        rows.push({ c: [{ v: new Date(readings[j].date) }, { v: newTemps[i].toFixed(1) }, { v: newHums[i] }].toFixed(1) });
-    }
-
-    return rows;
-}
 
 function buildChart(sensor, readings) {
+
+    function buildRows(sensor, readings) {
+        function getSensorByName(name, sensors) {
+            return sensors.filter(
+                function(sensor) {
+                    return sensor.sensor === name;
+                }
+            );
+        }
+
+        var rows = [];
+
+        for (var i = 0; i < readings.length; i++) {
+            var data = getSensorByName(sensor, readings[i].sensors)[0];
+            rows.push({ c: [{ v: new Date(readings[i].date) }, { v: data.temp.toFixed(1) }, { v: data.hum.toFixed(1) }] });
+        }
+        return rows;
+    }
+
     var chartObject = {};
     var cols = [
         { id: 't', label: 'Date', type: 'string' },
