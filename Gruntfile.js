@@ -440,7 +440,7 @@ module.exports = function(grunt) {
         protractor: {
             options: {
                 // Location of your protractor config file
-                configFile: "test/protractor.conf.js",
+                configFile: 'test/protractor.conf.js',
 
                 // Do you want the output to use fun colors?
                 noColor: false,

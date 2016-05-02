@@ -1,10 +1,25 @@
-<div class="row row-content" ng-controller="HistoryChartCtrl">
-    <div ng-if="!showData">
-        <h3>{{message}}</h3>
-    </div>
-    <div class="row row-content" ng-if="showData">
-        <div google-chart chart="chartObject1" agc-on-select="hideSeries(selectedItem)" style="height:600px; width:100%;"></div>
-        <div google-chart chart="chartObject2" style="height:600px; width:100%;"></div>
-        <div google-chart chart="chartObject3" style="height:600px; width:100%;"></div>
+<div class="row row-content">
+    <div ng-controller="HistoryChartCtrl">
+        <div ng-if="!showData">
+            <h3>{{message}}</h3>
+        </div>
+        <div class="row row-content">
+            <form id="selectForm" name="selectForm" ng-submit="loadHistory()">
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Days to show</span>
+                        <input type="text" ng-model="days">
+                    </label>
+                    <label class="item">
+                        <button class="button button-block button-positive" type="submit">Submit</button>
+                    </label>
+                </div>
+            </form>
+        </div>
+        <div class="row row-content" ng-if="showData">
+            <div google-chart chart="chartObject1" agc-on-select="hideSeries(selectedItem)" style="height:600px; width:100%;"></div>
+            <div google-chart chart="chartObject2" style="height:600px; width:100%;"></div>
+            <div google-chart chart="chartObject3" style="height:600px; width:100%;"></div>
+        </div>
     </div>
 </div>

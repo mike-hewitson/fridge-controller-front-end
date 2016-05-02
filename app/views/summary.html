@@ -4,6 +4,19 @@
             <h3>{{message}}</h3>
         </div>
     </div>
+    <div class="row row-content">
+        <form id="selectForm" name="selectForm" ng-submit="loadSummary()">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Weeks to show</span>
+                    <input type="text" ng-model="weeks">
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit">Submit</button>
+                </label>
+            </div>
+        </form>
+    </div>
     <div class="row row-content" ng-if="showData">
         <div class="col-xs-12">
             <div google-chart chart="chartObject" style="height:600px; width:100%;"></div>

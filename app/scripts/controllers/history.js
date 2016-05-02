@@ -63,64 +63,64 @@ function buildChart(sensor, readings) {
 angular.module('fridgesApp')
     .controller('HistoryChartCtrl', ['$scope', 'historyFactory', function($scope, historyFactory) {
 
-        $scope.showData = false;
-        $scope.message = 'Loading ...';
-        historyFactory.getHistory().query(
-            function(response) {
-                $scope.readings = response;
-                $scope.showData = true;
-                $scope.message = '';
+        $scope.loadHistory = function() {
 
-                // Build chart objects
-                //Methods
+            $scope.showData = false;
+            $scope.message = 'Loading ...';
+            historyFactory.getHistory().get( { id: $scope.days }).$promise.then(
+                function(response) {
+                    $scope.readings = response;
+                    $scope.showData = true;
+                    $scope.message = '';
 
-                // init();
+                    $scope.chartObject1 = {};
 
-                $scope.chartObject1 = {};
-
-                function hideSeries(selectedItem) {
-                    var col = selectedItem.column;
-                    if (selectedItem.row === null) {
-                        if ($scope.chartObject1.view.columns[col] === col) {
-                            $scope.chartObject1.view.columns[col] = {
-                                label: $scope.chartObject1.data.cols[col].label,
-                                type: $scope.chartObject1.data.cols[col].type,
-                                calc: function() {
-                                    return null;
-                                }
-                            };
-                            // $scope.chartObject1.options.colors[col - 1] = '#CCCCCC';
-                        } else {
-                            $scope.chartObject1.view.columns[col] = col;
-                            // $scope.chartObject1.options.colors[col - 1] = $scope.chartObject1.options.defaultColors[col - 1];
+                    function hideSeries(selectedItem) {
+                        var col = selectedItem.column;
+                        if (selectedItem.row === null) {
+                            if ($scope.chartObject1.view.columns[col] === col) {
+                                $scope.chartObject1.view.columns[col] = {
+                                    label: $scope.chartObject1.data.cols[col].label,
+                                    type: $scope.chartObject1.data.cols[col].type,
+                                    calc: function() {
+                                        return null;
+                                    }
+                                };
+                            } else {
+                                $scope.chartObject1.view.columns[col] = col;
+                            }
                         }
                     }
-                }
 
-                $scope.hideSeries = hideSeries;
+                    $scope.hideSeries = hideSeries;
 
-                $scope.chartObject1 = buildChart('Ambient', $scope.readings);
+                    $scope.chartObject1 = buildChart('Ambient', $scope.readings);
 
-                $scope.chartObject1.view = {
-                    columns: [0, 1, 2]
-                };
+                    $scope.chartObject1.view = {
+                        columns: [0, 1, 2]
+                    };
 
-                // Hide humidity column
-                $scope.chartObject1.view.columns[2] = {
-                    label: $scope.chartObject1.data.cols[2].label,
-                    type: $scope.chartObject1.data.cols[2].type,
-                    calc: function() {
-                        return null;
-                    }
-                };
+                    // Hide humidity column
+                    $scope.chartObject1.view.columns[2] = {
+                        label: $scope.chartObject1.data.cols[2].label,
+                        type: $scope.chartObject1.data.cols[2].type,
+                        calc: function() {
+                            return null;
+                        }
+                    };
 
-                $scope.chartObject2 = buildChart('Curing', $scope.readings);
-                $scope.chartObject3 = buildChart('Fridge', $scope.readings);
+                    $scope.chartObject2 = buildChart('Curing', $scope.readings);
+                    $scope.chartObject3 = buildChart('Fridge', $scope.readings);
 
 
-            },
-            function(response) {
-                $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
-            });
+                },
+                function(response) {
+                    $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
+                });
+        };
+
+        $scope.days = 7;
+        $scope.loadHistory();
+
 
     }]);
