@@ -18,6 +18,7 @@ angular.module('fridgesApp')
                 $scope.message = '';
                 $scope.reading = response[0];
             },
+            /* istanbul ignore next */
             function(response) {
                 $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
             });

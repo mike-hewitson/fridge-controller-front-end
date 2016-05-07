@@ -75,6 +75,7 @@ angular.module('fridgesApp')
 
                     $scope.chartObject1 = {};
 
+                    /* istanbul ignore next */
                     function hideSeries(selectedItem) {
                         var col = selectedItem.column;
                         if (selectedItem.row === null) {
@@ -104,7 +105,9 @@ angular.module('fridgesApp')
                     $scope.chartObject1.view.columns[2] = {
                         label: $scope.chartObject1.data.cols[2].label,
                         type: $scope.chartObject1.data.cols[2].type,
+                        /* istanbul ignore next */
                         calc: function() {
+                             /* istanbul ignore next */
                             return null;
                         }
                     };
@@ -114,6 +117,7 @@ angular.module('fridgesApp')
 
 
                 },
+                /* istanbul ignore next */
                 function(response) {
                     $scope.message = 'Error: ' + response.status + ' ' + response.statusText;
                 });

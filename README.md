@@ -16,8 +16,10 @@ Run ```$ grunt``` for building and ```$ grunt serve``` for preview.
 
 Running ```$ grunt test``` will run the unit tests with karma.
 
-Change directory to the tests directory and run:
-```protractor protractor.conf.js```
+To run the e2e tests, run
+```$ grunt serve```
+Then change directory to the tests directory and run:
+```$ protractor protractor.conf.js```
 
 ## Deployment
 

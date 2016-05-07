@@ -3,6 +3,7 @@
   "private": true,
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
+    "chromedriver": "^2.21.2",
     "grunt": "^0.4.5",
     "grunt-angular-templates": "^0.5.7",
     "grunt-concurrent": "^1.0.0",
@@ -18,6 +19,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-filerev": "^2.1.2",
     "grunt-google-cdn": "^0.4.3",
+    "grunt-istanbul": "^0.7.0",
     "grunt-jscs": "^1.8.0",
     "grunt-karma": "^0.12.2",
     "grunt-newer": "^1.1.0",
@@ -36,7 +38,7 @@
     "karma-jshint-preprocessor": "0.0.6",
     "karma-phantomjs-launcher": "^1.0.0",
     "phantomjs-prebuilt": "^2.1.7",
-    "protractor": "^3.2.2",
+    "protractor": "^3.3.0",
     "time-grunt": "^1.0.0"
   },
   "engines": {
