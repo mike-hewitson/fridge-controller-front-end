@@ -14,14 +14,31 @@ Run ```$ grunt``` for building and ```$ grunt serve``` for preview.
 
 ## Testing
 
-Running ```$ grunt test``` will run the unit tests with karma.
+### Unit Testing
 
-To run the e2e tests, run
+Running ```$ grunt test``` will run the unit tests with karma.
+Does not need server as the back end is mocked out.
+Coverage reporting is in the build directory under /reports/coverage.
+
+### E2E Testing
+
+Requires the REST server on port 3000, started by running:
+```$ json-server db.json --watch``` from the json-server directory.
+
+To run the e2e tests, run in the main directory:
 ```$ grunt serve```
+
 Then change directory to the tests directory and run:
 ```$ protractor protractor.conf.js```
 
+### Linting
+
+The JSHint reporting comes out from running the server
+```$ grunt serve```
+
 ## Deployment
+
+Change the environment to point to the right rest server.
 
 ```
 $ grunt build

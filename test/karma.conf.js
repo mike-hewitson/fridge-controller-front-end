@@ -82,7 +82,7 @@ module.exports = function(config) {
         coverageReporter: {
             // specify a common output directory
             // type : 'text'
-            dir: 'build/reports/coverage',
+            dir: 'reports/coverage',
             reporters: [
                 { type: 'text' },
                 { type: 'html', subdir: 'report-html' },
