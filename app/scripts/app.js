@@ -48,7 +48,8 @@ angular.module('fridgesApp', [
         'ngResource',
         'ngSanitize',
         'ngTouch',
-        'googlechart'
+        'googlechart',
+        'config'
     ])
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider

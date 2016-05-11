@@ -27,6 +27,7 @@ module.exports = function(grunt) {
     };
 
     grunt.loadNpmTasks('grunt-protractor-runner');
+    grunt.loadNpmTasks('grunt-ng-constant');
 
     // Define the configuration for all the tasks
     grunt.initConfig({
@@ -463,6 +464,29 @@ module.exports = function(grunt) {
                     keepAlive: true
                 }
             }
+        },
+        ngconstant: {
+            options: {
+                name: 'config',
+                wrap: '"use strict";\n\n{%= __ngModule %}',
+                space: '  '
+            },
+            development: {
+                options: {
+                    dest: '<%= yeoman.app %>/scripts/config.js'
+                },
+                constants: {
+                    package: grunt.file.readJSON('development.json')
+                }
+            },
+            production: {
+                options: {
+                    dest: '<%= yeoman.dist %>/scripts/config.js'
+                },
+                constants: {
+                    package: grunt.file.readJSON('production.json')
+                }
+            }
         }
 
     });
@@ -476,6 +500,7 @@ module.exports = function(grunt) {
         grunt.task.run([
             'clean:server',
             'wiredep',
+            'ngconstant:development',
             'concurrent:server',
             'postcss:server',
             'connect:livereload',
@@ -491,6 +516,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test', [
         'clean:server',
         'wiredep',
+        'ngconstant:development',
         'concurrent:test',
         'postcss',
         'connect:test',
@@ -501,6 +527,7 @@ module.exports = function(grunt) {
         'clean:dist',
         'wiredep',
         'useminPrepare',
+        'ngconstant:production',
         'concurrent:dist',
         'postcss',
         'ngtemplates',
