@@ -2,8 +2,6 @@
 
 angular.module('config', [])
 
-.constant('ENV', 'development')
-
-.constant('baseURL', 'http://localhost:3000/')
+.constant('package', {ENV:'development',baseURL:'http://localhost:3000/'})
 
 ;
