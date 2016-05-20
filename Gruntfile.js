@@ -12,6 +12,7 @@ module.exports = function(grunt) {
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
+
     // Automatically load required Grunt tasks
     require('jit-grunt')(grunt, {
         useminPrepare: 'grunt-usemin',
@@ -26,6 +27,9 @@ module.exports = function(grunt) {
     };
 
     grunt.loadNpmTasks('grunt-protractor-runner');
+    grunt.loadNpmTasks('grunt-ng-constant');
+
+    var serveStatic = require('serve-static');
 
     // Define the configuration for all the tasks
     grunt.initConfig({
@@ -90,17 +94,24 @@ module.exports = function(grunt) {
                     open: true,
                     middleware: function(connect) {
                         return [
-                            connect.static('.tmp'),
-                            connect().use(
-                                '/bower_components',
-                                connect.static('./bower_components')
-                            ),
-                            connect().use(
-                                '/app/styles',
-                                connect.static('./app/styles')
-                            ),
-                            connect.static(appConfig.app)
+                            serveStatic('.tmp'),
+                            connect().use('/bower_components', serveStatic('./bower_components')),
+                            serveStatic(appConfig.app)
                         ];
+
+
+                        // return [
+                        //     connect.static('.tmp'),
+                        //     connect().use(
+                        //         '/bower_components',
+                        //         connect.static('./bower_components')
+                        //     ),
+                        //     connect().use(
+                        //         '/app/styles',
+                        //         connect.static('./app/styles')
+                        //     ),
+                        //     serveStatic(appConfig.app)
+                        // ];
                     }
                 }
             },
@@ -109,14 +120,20 @@ module.exports = function(grunt) {
                     port: 9001,
                     middleware: function(connect) {
                         return [
-                            connect.static('.tmp'),
-                            connect.static('test'),
-                            connect().use(
-                                '/bower_components',
-                                connect.static('./bower_components')
-                            ),
-                            connect.static(appConfig.app)
+                            serveStatic('.tmp'),
+                            serveStatic('.test'),
+                            connect().use('/bower_components', serveStatic('./bower_components')),
+                            serveStatic(appConfig.app)
                         ];
+
+                        //     connect.static('.tmp'),
+                        //     connect.static('test'),
+                        //     connect().use(
+                        //         '/bower_components',
+                        //         connect.static('./bower_components')
+                        //     ),
+                        //     connect.static(appConfig.app)
+                        // ];
                     }
                 }
             },
@@ -462,6 +479,29 @@ module.exports = function(grunt) {
                     keepAlive: true
                 }
             }
+        },
+        ngconstant: {
+            options: {
+                name: 'config',
+                wrap: '"use strict";\n\n{%= __ngModule %}',
+                space: '  '
+            },
+            development: {
+                options: {
+                    dest: '<%= yeoman.app %>/scripts/config.js'
+                },
+                constants: {
+                    package: grunt.file.readJSON('development.json')
+                }
+            },
+            production: {
+                options: {
+                    dest: '<%= yeoman.dist %>/scripts/config.js'
+                },
+                constants: {
+                    package: grunt.file.readJSON('production.json')
+                }
+            }
         }
 
     });
@@ -475,6 +515,7 @@ module.exports = function(grunt) {
         grunt.task.run([
             'clean:server',
             'wiredep',
+            'ngconstant:development',
             'concurrent:server',
             'postcss:server',
             'connect:livereload',
@@ -490,6 +531,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test', [
         'clean:server',
         'wiredep',
+        'ngconstant:development',
         'concurrent:test',
         'postcss',
         'connect:test',
@@ -500,6 +542,7 @@ module.exports = function(grunt) {
         'clean:dist',
         'wiredep',
         'useminPrepare',
+        'ngconstant:production',
         'concurrent:dist',
         'postcss',
         'ngtemplates',
