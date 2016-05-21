@@ -38,7 +38,7 @@ The JSHint reporting comes out from running the server
 
 ## Deployment
 
-Change the environment to point to the right rest server.
+Confirm the environment constants are pointing to the right rest server. The build should bring in the production environment from production.json.
 
 ```
 $ grunt build
