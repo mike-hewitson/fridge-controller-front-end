@@ -59,14 +59,14 @@ angular.module('fridgesApp', [
             url: '/',
             views: {
                 'header': {
-                    templateUrl: 'views/header.html',
+                    templateUrl: 'views/header.html'
                 },
                 'content': {
                     templateUrl: 'views/main.html',
                     controller: 'MainCtrl'
                 },
                 'footer': {
-                    templateUrl: 'views/footer.html',
+                    templateUrl: 'views/footer.html'
                 }
             }
 

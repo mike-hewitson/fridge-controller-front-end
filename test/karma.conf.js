@@ -69,7 +69,7 @@ module.exports = function(config) {
         // add to list of preprocesssors
         preprocessors: {
             'app/scripts/controllers/*.js': ['jshint', 'coverage'],
-            'app/scripts/*.js': ['jshint', 'coverage'],
+            'app/scripts/*.js': ['jshint', 'coverage']
             // 'app/scripts/app.js': ['coverage']
         },
 
@@ -86,7 +86,7 @@ module.exports = function(config) {
             dir: 'reports/coverage',
             reporters: [
                 { type: 'text' },
-                { type: 'html', subdir: 'report-html' },
+                { type: 'html', subdir: 'report-html' }
                 // }
             ]
         },
@@ -99,7 +99,7 @@ module.exports = function(config) {
 
         // level of logging
         // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-        logLevel: config.LOG_INFO,
+        logLevel: config.LOG_INFO
 
         // Uncomment the following lines if you are using grunt's server to run the tests
         // proxies: {
