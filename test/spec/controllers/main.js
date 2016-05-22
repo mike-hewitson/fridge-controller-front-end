@@ -1,5 +1,4 @@
 'use strict';
-// var latestFixture = require('./latestFixture');
 var latestFixture = [{
     '_id': '56f102d1c369bf0525c055f9',
     'date': '2016-03-22T08:31:13.158Z',

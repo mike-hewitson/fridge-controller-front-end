@@ -68,13 +68,3 @@ angular.module('fridgesApp')
         $scope.loadSummary();
 
     }]);
-
-                // .$promise.then(
-                //     function(response) {
-                //         $scope.dish = response;
-                //         $scope.showDish = true;
-                //     },
-                //     function(response) {
-                //         $scope.message = "Error: " + response.status + " " + response.statusText;
-                //     }
-                // );

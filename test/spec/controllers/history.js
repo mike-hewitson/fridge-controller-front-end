@@ -1,5 +1,4 @@
 'use strict';
-// var historyFixture = require('./fixtures/historyFixture');
 var historyFixture = [
 
     {

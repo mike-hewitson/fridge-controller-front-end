@@ -1,5 +1,4 @@
 'use strict';
-// var summaryFixture = require('./fixtures/history_fixture');
 var summaryFixture = [{ '_id': { 'date': '2016-04-26' }, 'count': 288, 'avgHum': 50.40173611376021, 'avgTemp': 23.17361119389534, 'maxTemp': 27.799999237060547, 'minTemp': 9.800000190734863, 'maxHum': 60.79999923706055, 'minHum': 35.400001525878906 },
     { '_id': { 'date': '2016-04-25' }, 'count': 288, 'avgHum': 52.63645839691162, 'avgTemp': 22.829513861073387, 'maxTemp': 26.600000381469727, 'minTemp': 19.299999237060547, 'maxHum': 64.69999694824219, 'minHum': 34.5 },
     { '_id': { 'date': '2016-04-23' }, 'count': 287, 'avgHum': 43.2665504827732, 'avgTemp': 22.418466800596654, 'maxTemp': 26.299999237060547, 'minTemp': 19.200000762939453, 'maxHum': 59.79999923706055, 'minHum': 28.700000762939453 },
