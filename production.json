@@ -1,4 +1,4 @@
 {
     "name": "production",
-    "baseURL": "http://192.168.1.126:3000/"
+    "baseURL": "http://mikeyjcat.ddns.net:3000/"
 }
