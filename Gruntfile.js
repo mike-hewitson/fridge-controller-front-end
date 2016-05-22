@@ -496,7 +496,7 @@ module.exports = function(grunt) {
             },
             production: {
                 options: {
-                    dest: '<%= yeoman.dist %>/scripts/config.js'
+                    dest: '<%= yeoman.app %>/scripts/config.js'
                 },
                 constants: {
                     ENV: grunt.file.readJSON('production.json')
@@ -542,13 +542,13 @@ module.exports = function(grunt) {
         'clean:dist',
         'wiredep',
         'useminPrepare',
-        'ngconstant:production',
         'concurrent:dist',
         'postcss',
         'ngtemplates',
         'concat',
         'ngAnnotate',
         'copy:dist',
+        'ngconstant:production',
         'cdnify',
         'cssmin',
         'uglify',
