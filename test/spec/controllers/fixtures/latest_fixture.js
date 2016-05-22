@@ -16,4 +16,4 @@ module.exports = [{
         "sensor": "Curing",
         "temp": 3.700000047683716
     }]
-}]
+}];
