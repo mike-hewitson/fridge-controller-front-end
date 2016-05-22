@@ -84,7 +84,7 @@ module.exports = function(grunt) {
         // The actual grunt server settings
         connect: {
             options: {
-                port: 9000,
+                port: 9002,
                 // Change this to '0.0.0.0' to access the server from outside.
                 hostname: 'localhost',
                 livereload: 35729
@@ -117,7 +117,7 @@ module.exports = function(grunt) {
             },
             test: {
                 options: {
-                    port: 9001,
+                    port: 9003,
                     middleware: function(connect) {
                         return [
                             serveStatic('.tmp'),
@@ -491,7 +491,7 @@ module.exports = function(grunt) {
                     dest: '<%= yeoman.app %>/scripts/config.js'
                 },
                 constants: {
-                    package: grunt.file.readJSON('development.json')
+                    ENV: grunt.file.readJSON('development.json')
                 }
             },
             production: {
@@ -499,7 +499,7 @@ module.exports = function(grunt) {
                     dest: '<%= yeoman.dist %>/scripts/config.js'
                 },
                 constants: {
-                    package: grunt.file.readJSON('production.json')
+                    ENV: grunt.file.readJSON('production.json')
                 }
             }
         }

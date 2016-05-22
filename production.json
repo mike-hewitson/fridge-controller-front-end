@@ -1,4 +1,4 @@
 {
-    "ENV": "production",
+    "name": "production",
     "baseURL": "http://mikeyjcat.ddns.net:3000/"
 }

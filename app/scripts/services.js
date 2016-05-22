@@ -1,24 +1,24 @@
 'use strict';
 
 angular.module('fridgesApp')
-    .service('latestFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+    .service('latestFactory', ['$resource', 'ENV', function($resource, ENV) {
 
         this.getLatest = function() {
-            return $resource(baseURL + 'latest/');
+            return $resource(ENV.baseURL + 'latest/');
         };
     }])
-    .service('historyFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+    .service('historyFactory', ['$resource', 'ENV', function($resource, ENV) {
 
         this.getHistory = function() {
-            return $resource(baseURL + 'history/:id', null, {
+            return $resource(ENV.baseURL + 'history/:id', null, {
                 'get': { method: 'get', isArray: true }
             });
         };
     }])
-    .service('summaryFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+    .service('summaryFactory', ['$resource', 'ENV', function($resource, ENV) {
 
         this.getSummary = function() {
-            return $resource(baseURL + 'summary/:id', null, {
+            return $resource(ENV.baseURL + 'summary/:id', null, {
                 'get': { method: 'get', isArray: true }
             });
         };

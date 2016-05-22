@@ -73,15 +73,15 @@ angular.module('fridgesApp', [
         })
 
         // route for the aboutus page
-        .state('app.about', {
-            url: 'about',
-            views: {
-                'content@': {
-                    templateUrl: 'views/about.html',
-                    controller: 'AboutCtrl'
-                }
-            }
-        })
+        // .state('app.about', {
+        //     url: 'about',
+        //     views: {
+        //         'content@': {
+        //             templateUrl: 'views/about.html',
+        //             controller: 'AboutCtrl'
+        //         }
+        //     }
+        // })
 
         // route for the contactus page
         .state('app.history', {
