@@ -46,7 +46,7 @@ angular.module('fridgesApp')
                     };
 
                     $scope.chartObject.options = {
-                        'title': 'Ambient Conditions',
+                        'title': 'Environment Conditions',
                         curveType: 'function',
                         smoothLine: true,
                         series: {

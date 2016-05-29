@@ -17,7 +17,9 @@ function buildChart(sensor, readings) {
 
         for (var i = 0; i < readings.length; i++) {
             var data = getSensorByName(sensor, readings[i].sensors)[0];
-            rows.push({ c: [{ v: new Date(readings[i].date) }, { v: data.temp.toFixed(1) }, { v: data.hum.toFixed(1) }] });
+            if (data) {
+               rows.push({ c: [{ v: new Date(readings[i].date) }, { v: data.temp.toFixed(1) }, { v: data.hum.toFixed(1) }] });
+            }
         }
         return rows;
     }
@@ -95,8 +97,7 @@ angular.module('fridgesApp')
 
                     $scope.hideSeries = hideSeries;
 
-                    $scope.chartObject1 = buildChart('Ambient', $scope.readings);
-
+                    $scope.chartObject1 = buildChart('Environment', $scope.readings);
                     $scope.chartObject1.view = {
                         columns: [0, 1, 2]
                     };
@@ -112,8 +113,23 @@ angular.module('fridgesApp')
                         }
                     };
 
-                    $scope.chartObject2 = buildChart('Curing', $scope.readings);
-                    $scope.chartObject3 = buildChart('Fridge', $scope.readings);
+                    $scope.chartObject2 = buildChart('Ambient', $scope.readings);
+                    // $scope.chartObject1.view = {
+                    //     columns: [0, 1, 2]
+                    // };
+
+                    // // Hide humidity column
+                    // $scope.chartObject1.view.columns[2] = {
+                    //     label: $scope.chartObject1.data.cols[2].label,
+                    //     type: $scope.chartObject1.data.cols[2].type,
+                    //     /* istanbul ignore next */
+                    //     calc: function() {
+                    //          /* istanbul ignore next */
+                    //         return null;
+                    //     }
+                    // };
+                    $scope.chartObject3 = buildChart('Curing', $scope.readings);
+                    $scope.chartObject4 = buildChart('Fridge', $scope.readings);
 
 
                 },
