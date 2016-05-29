@@ -114,20 +114,6 @@ angular.module('fridgesApp')
                     };
 
                     $scope.chartObject2 = buildChart('Ambient', $scope.readings);
-                    // $scope.chartObject1.view = {
-                    //     columns: [0, 1, 2]
-                    // };
-
-                    // // Hide humidity column
-                    // $scope.chartObject1.view.columns[2] = {
-                    //     label: $scope.chartObject1.data.cols[2].label,
-                    //     type: $scope.chartObject1.data.cols[2].type,
-                    //     /* istanbul ignore next */
-                    //     calc: function() {
-                    //          /* istanbul ignore next */
-                    //         return null;
-                    //     }
-                    // };
                     $scope.chartObject3 = buildChart('Curing', $scope.readings);
                     $scope.chartObject4 = buildChart('Fridge', $scope.readings);
 
