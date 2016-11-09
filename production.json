@@ -1,4 +1,4 @@
 {
     "name": "production",
-    "baseURL": "http://mikeyjcat.ddns.net:3000/"
+    "baseURL": "https://pi-fridge-server.herokuapp.com/"
 }
