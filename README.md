@@ -43,4 +43,12 @@ Confirm the environment constants are pointing to the right rest server. The bui
 ```
 $ grunt build
 ```
-Copy dist folder to server directory
+Copy dist folder to server directory. Create nginx config to point at index.html in the root.
+
+## Deployment on Heruko
+
+Set up clean heroku application, with dropbox deployment option.
+Copy the contents of the dist folder into the dropbox heroku app folder.
+Copy index.php into the dropbox folder as well. This is to fool heroku into treating this as a plain web app.
+Deploy and open app!
+
