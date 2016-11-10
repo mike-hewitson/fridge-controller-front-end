@@ -26,7 +26,7 @@ function buildChart(sensor, readings) {
 
     var chartObject = {};
     var cols = [
-        { id: 't', label: 'Date', type: 'string' },
+        { id: 't', label: 'Date', type: 'datetime' },
         { id: 's', label: 'Temperature', type: 'number' },
         { id: 's', label: 'Humidity', type: 'number' }
     ];

@@ -21,7 +21,7 @@ angular.module('fridgesApp')
 
                     $scope.chartObject = {};
                     var cols = [
-                        { id: 'x', label: 'Date', type: 'string' },
+                        { id: 'x', label: 'Date', type: 'date' },
                         { id: 's', label: 'Maximum', type: 'number' },
                         { id: 's', label: 'Average', type: 'number' },
                         { id: 's', label: 'Minimum', type: 'number' }
@@ -30,7 +30,7 @@ angular.module('fridgesApp')
                     var rows = [];
                     for (var i = 0; i < $scope.summary.length; i++) {
                         rows.push({
-                            c: [{ v: $scope.summary[i]._id.date },
+                            c: [{ v: new Date($scope.summary[i]._id.date) },
                                 { v: $scope.summary[i].maxTemp.toFixed(1) },
                                 { v: $scope.summary[i].avgTemp.toFixed(1) },
                                 { v: $scope.summary[i].minTemp.toFixed(1) }
